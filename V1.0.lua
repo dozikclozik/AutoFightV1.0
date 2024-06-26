@@ -57,13 +57,14 @@ end)
 
 local function MakingDeathCube()
 	local DeathCube = Instance.new("Part", character)
-	DeathCube.Size = Vector3.new(15,1,15)
+	DeathCube.Size = Vector3.new(15,15,15)
 	DeathCube.CanCollide = false
-	DeathCube.Anchored = false
-
-	local motor = Instance.new("Motor6D", DeathCube) motor.Name = "Attach"
-	motor.Part0 = DeathCube
-	motor.Part1 = Hrp
+	DeathCube.Anchored = true
+	DeathCube.Transparency = 0.5
+	
+	game["Run Service"].Stepped:Connect(function()
+		DeathCube.CFrame = Hrp.CFrame
+	end)
 	
 	DeathCube.Touched:Connect(function(hit)
 		local playerTouchedCube = game.Players:GetPlayerFromCharacter(hit.Parent)
@@ -75,7 +76,7 @@ local function MakingDeathCube()
 	end)
 end
 
-if PlayersOnServer >= 0 then
+if PlayersOnServer >= 5 then
 	MakingDeathCube()
 end
 	
