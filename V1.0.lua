@@ -71,7 +71,7 @@ local function MakingDeathCube()
 		if playerTouchedCube ~= lplayer and playerTouchedCube:FindFirstChildOfClass("Humanoid")
 		and playerTouchedCube.Character:FindFirstChildOfClass("Tool") then
 			Hrp:PivotTo(playerTouchedCube.Character:FindFirstChild("HumanoidRootPart").CFrame
-				* CFrame.new(nil,nil, -3))
+				* CFrame.new(nil,nil, 3))
 		end
 	end)
 end
