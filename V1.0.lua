@@ -57,7 +57,7 @@ end)
 
 local function MakingDeathCube()
 	local DeathCube = Instance.new("Part", character)
-	DeathCube.Size = Vector3.new(15,15,15)
+	DeathCube.Size = Vector3.new(15,1,15)
 	DeathCube.CanCollide = false
 	local motor = Instance.new("Motor6D", Hrp) motor.Name = "Attach"
 	motor.Part0 = Hrp
