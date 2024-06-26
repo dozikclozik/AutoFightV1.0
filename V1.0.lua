@@ -68,16 +68,17 @@ local function MakingDeathCube()
 	
 	DeathCube.Touched:Connect(function(hit)
 		local playerTouchedCube = game.Players:GetPlayerFromCharacter(hit.Parent)
-		if playerTouchedCube ~= lplayer and playerTouchedCube:FindFirstChildOfClass("Humanoid")
-		and playerTouchedCube.Character:FindFirstChildOfClass("Tool") then
+		if playerTouchedCube:FindFirstChildOfClass("Humanoid")
+			and playerTouchedCube.Character:FindFirstChildOfClass("Tool") and playerTouchedCube ~= lplayer then
 			Hrp:PivotTo(playerTouchedCube.Character:FindFirstChild("HumanoidRootPart").CFrame
-				* CFrame.new(nil,nil, 3))
+				* CFrame.new(nil,nil, -3))
+			print(playerTouchedCube.Name .. " touched cube.")
 		end
 	end)
 end
 
 if PlayersOnServer >= 5 then
-	MakingDeathCube()
+	spawn(MakingDeathCube)
 end
 	
 local humanoid = character:FindFirstChildOfClass("Humanoid")
