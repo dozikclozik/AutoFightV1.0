@@ -64,7 +64,6 @@ local function MakingDeathCube()
 	local motor = Instance.new("Motor6D", DeathCube) motor.Name = "Attach"
 	motor.Part0 = DeathCube
 	motor.Part1 = Hrp
-	motor.C0 = Vector3.new(0,0,0)
 	
 	DeathCube.Touched:Connect(function(hit)
 		local playerTouchedCube = game.Players:GetPlayerFromCharacter(hit.Parent)
@@ -76,7 +75,7 @@ local function MakingDeathCube()
 	end)
 end
 
-if PlayersOnServer >= 5 then
+if PlayersOnServer >= 0 then
 	MakingDeathCube()
 end
 	
